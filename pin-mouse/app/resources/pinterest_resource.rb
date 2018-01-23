@@ -6,9 +6,9 @@ class PinterestResource
     # Simulations::SimulatedPinResource.retrieve
     # PinResource.retrieve
 
-    response = get("https://api.pinterest.com/v1/me/pins/?access_token=${ENV['PINTEREST_ACCESS_TOKEN']}&fields=id,creator,note,image,link,url&limit=10")
+    response = get("https://api.pinterest.com/v1/me/pins/?access_token=#{ENV['PINTEREST_ACCESS_TOKEN']}&fields=id,creator,note,image,link,url&limit=10")
 
-    File.write("dump/PinterestResource_retrieve_pins.json", response)
+    File.write("pinterestResource_retrieve_pins.json", response)
 
     adapter.decode_pins(response.body)
   end
