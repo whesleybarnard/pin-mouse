@@ -1,0 +1,8 @@
+development:
+  adapter: postgresql
+  database: pin-mouse
+  host: localhost
+  pool: 5
+  username: pin-mouse
+  password: pin-mouse-password
+  encoding: utf8

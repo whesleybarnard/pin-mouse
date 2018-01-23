@@ -1,0 +1,1 @@
+docker run --name pin-mouse-db -e POSTGRES_PASSWORD=pin-mouse-password -e POSTGRES_USER=pin-mouse -e POSTGRES_DB=pin-mouse -p 5432:5432 -d postgres

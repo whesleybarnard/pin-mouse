@@ -1,0 +1,15 @@
+<div class="row">
+  <% @pins.each do |pin| %>
+    <div class="col-md-2 my-3">
+      <div class="card bg-light pin-card">
+        <div class="card-body">
+          <div class="border border-secondary" style="max-height: 430px; overflow: hidden;">
+            <img src="<%= pin.image %>" alt="" style="width: 100%;">
+          </div>
+          <div><%= pin.note %></div>
+          <div><a href="<%= pin.url %>" class="btn btn-primary" target="_blank"><i class="fa fa-flag"></i> Go to pin</a></div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

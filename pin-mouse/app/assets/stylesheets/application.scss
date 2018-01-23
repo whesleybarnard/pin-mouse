@@ -1,0 +1,15 @@
+@import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+.pin-card {
+  .card-body {
+    >div {
+      padding-top: 10px;
+
+      &:first-child {
+        padding-top: 0;
+      }
+    }
+  }
+}
