@@ -8,4 +8,10 @@ class ScheduledPinsController < ApplicationController
 
         render json: { saved: true }
     end
+
+    def save_pin_id
+        data = params.permit(:pin_uuid)
+
+        puts "the pin to save is: #{data[:pin_uuid]}"
+    end
 end

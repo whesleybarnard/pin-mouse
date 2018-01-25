@@ -33,6 +33,10 @@ class PinterestResource
 
   end
 
+  def self.retrieve_pin_info
+    response = get("https://api.pinterest.com/v1/pins/316166836332265804/?access_token=#{ENV['PINTEREST_ACCESS_TOKEN']}&fields=id%2Clink%2Cnote%2Curl%2Cmetadata%2Cmedia%2Ccreator%2Ccreated_at%2Ccounts%2Ccolor%2Cboard%2Cattribution%2Coriginal_link")
+  end
+
   private
 
   def self.adapter
