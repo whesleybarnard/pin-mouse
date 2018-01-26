@@ -14,7 +14,7 @@ class PinterestResource
   end
 
   def self.retrieve_boards
-    response = get("https://api.pinterest.com/v1/me/boards/?access_token=${ENV['PINTEREST_ACCESS_TOKEN']}&fields=id,creator,name,url&limit=20")
+    response = get("https://api.pinterest.com/v1/me/boards/?access_token=#{ENV['PINTEREST_ACCESS_TOKEN']}&fields=id,creator,name,url&limit=20")
   end
 
   def self.create_pin(pin)

@@ -1,3 +1,0 @@
-class ScheduledPin < ApplicationRecord
-
-end
