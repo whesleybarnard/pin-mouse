@@ -4,6 +4,34 @@ docker commands
 docker run --name pin-mouse-db -e POSTGRES_PASSWORD=pin-mouse-password -e POSTGRES_USER=pin-mouse -e POSTGRES_DB=pin-mouse -p 5432:5432 -d postgres
 
 ========================
+ssl commands
+========================
+### view
+certutil -L -d sql:$HOME/.pki/nssdb -n "exported_cert"
+### list
+certutil -d sql:$HOME/.pki/nssdb -L
+### delete
+certutil -D -d sql:$HOME/.pki/nssdb -n "localhost - Internet Widgits Pty Ltd"
+### add
+certutil -d sql:$HOME/.pki/nssdb -A -t "P,," -n exported_cert -i exported_cert
+
+### create cert
+openssl req \
+    -newkey rsa:2048 \
+    -x509 \
+    -nodes \
+    -keyout ssl/nginx-selfsigned.key.pem \
+    -new \
+    -out ssl/nginx-selfsigned.pem \
+    -subj /CN=localhost \
+    -reqexts SAN \
+    -extensions SAN \
+    -config <(cat /etc/ssl/openssl.cnf \
+        <(printf '[SAN]\nsubjectAltName=DNS:localhost')) \
+    -sha256 \
+    -days 3650
+
+========================
 scheduled jobs - look at using whenever
 ========================
 https://github.com/javan/whenever

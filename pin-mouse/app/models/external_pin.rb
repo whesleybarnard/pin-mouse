@@ -1,0 +1,3 @@
+class ExternalPin < ApplicationRecord
+
+end
