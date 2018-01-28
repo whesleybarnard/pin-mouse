@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
-  # TODO: need proper default root.
-  # root to: 'pins#index'
-  root to: 'pins#root_json'
+  root to: 'scheduled_pins#index'
 
   resources :pins, only: [:index]
 
-  post '/scheduled_pins/save_pin_id', to: 'scheduled_pins#save_pin_id'
+  post '/external_pins/save_pin_id', to: 'external_pins#save_pin_id'
+  post '/scheduled_pins/schedule', to: 'scheduled_pins#schedule'
 end

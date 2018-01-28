@@ -5,3 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+# 316166836332265804
+(1..5).each do |t|
+  p = ExternalPin.new
+  p.pin_uuid = '316166836332265804'
+  p.resolved = false
+  p.save
+end

@@ -1,16 +1,15 @@
 class ScheduledPinsController < ApplicationController
-    protect_from_forgery unless: -> { request.format.json? }
+  def index
+    @pins = PinterestService.retrieve_to_be_scheduled_pins
+    @boards = PinterestService.retrieve_boards
+  end
 
-    def save_pin_id
-        data = params.permit(:pin_uuid)
+  def schedule
+    # data = params.permit(:pin_uuid)
+    data = params
 
-        # TODO: move to service
-        puts "the pin to save is: #{data[:pin_uuid]}"
-        pin = ExternalPin.new
-        pin.pin_uuid = data[:pin_uuid]
-        pin.resolved = false
-        pin.save
+    puts data.inspect
 
-        render json: { saved: true, pin: data[:pin_uuid] }
-    end
+    puts
+  end
 end

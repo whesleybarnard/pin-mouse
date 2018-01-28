@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-10 scheduled-pins-grid">
+    <% @pins.each do |pin| %>
+      <div class="row mb-2">
+        <div class="col-2">
+          <div class="border border-secondary" style="max-height: 100px; overflow: hidden;">
+            <img src="<%= pin.image_url %>" alt="" style="width: 100%;">
+          </div>
+        </div>
+        <div class="col-10">
+          <div><%= pin.note %></div>
+          <div class="form-inline">
+            <label for="group_for_<%= pin.id %>">Board to pin to:</label>
+            <select class="form-control board-selector" id="group_for_<%= pin.id %>" data-pin="<%= pin.id %>">
+              <option value="">no board yet</option>
+              <% @boards.each do |board| %>
+                <option value="<%= board.board_uuid %>"><%= board.name %></option>
+              <% end %>
+            </select>
+            <button class="btn btn-secondary btn-apply-all">Apply All</button>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-2">
+    <button id="scheduleNow" class="btn btn-block btn-primary mb-2">Schedule Now</button>
+    <div class="alert alert-info">Only pins with boards selected will be scheduled</div>
+  </div>
+</div>

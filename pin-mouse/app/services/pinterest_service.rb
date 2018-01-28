@@ -1,13 +1,46 @@
 class PinterestService
-  def self.retrieve_pins
-    pins = PinterestResource.retrieve_pins
+
+  def self.create_external_pin(pin_uuid)
+    pin = ExternalPin.new
+    pin.pin_uuid = pin_uuid
+    pin.resolved = false
+    pin.save
+
+    ResolveExternalPinJob.perform_later pin
+
+    pin
   end
 
-  def self.create_scheduled_pin(scheduled_pin)
-    # pin = ScheduledPin.new(scheduled_pin)
-    # pin.save
-    #
-    # puts scheduled_pin.inspect
-    # puts pin.inspect
+  def self.retrieve_to_be_scheduled_pins
+    ScheduledPin.where(status: :to_be_scheduled)
   end
+
+  def self.retrieve_boards
+    PinterestResource.retrieve_boards
+  end
+
+  def self.retrieve_pin(pin_uuid)
+    PinterestResource.retrieve_pin(pin_uuid)
+
+  rescue RuntimeError => e
+    Rails.logger.error "Invalid pin: #{e}"
+    false
+  end
+
+  def self.create_scheduled_pin(external_pin)
+    pin = retrieve_pin(external_pin.pin_uuid)
+
+    scheduledPin = ScheduledPin.new
+    scheduledPin.note = pin.note
+    scheduledPin.link = pin.link
+    scheduledPin.image_url = pin.image_url
+    scheduledPin.status = :to_be_scheduled
+    scheduledPin.save
+
+    external_pin.resolved = true
+    external_pin.save
+
+    scheduledPin
+  end
+
 end
