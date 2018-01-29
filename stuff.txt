@@ -2,6 +2,7 @@
 docker commands
 ========================
 docker run --name pin-mouse-db -e POSTGRES_PASSWORD=pin-mouse-password -e POSTGRES_USER=pin-mouse -e POSTGRES_DB=pin-mouse -p 5432:5432 -d postgres
+docker run --name pin-mouse-db-test -e POSTGRES_PASSWORD=pin-mouse-password-test -e POSTGRES_USER=pin-mouse-test -e POSTGRES_DB=pin-mouse-test -p 5433:5432 -d postgres
 
 ========================
 ssl commands

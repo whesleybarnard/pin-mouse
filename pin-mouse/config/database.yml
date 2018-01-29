@@ -6,3 +6,12 @@ development:
   username: pin-mouse
   password: pin-mouse-password
   encoding: utf8
+test:
+  adapter: postgresql
+  database: pin-mouse-test
+  host: localhost
+  port: 5433
+  pool: 5
+  username: pin-mouse-test
+  password: pin-mouse-password-test
+  encoding: utf8
