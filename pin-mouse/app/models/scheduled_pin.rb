@@ -1,4 +1,8 @@
 class ScheduledPin < ApplicationRecord
+  def self.schedule_groups
+    { minutes_15: 'Every 15 minutes' }
+  end
+  
   validates :note, presence: true
   validates :link, presence: true
   validates :image_url, presence: true

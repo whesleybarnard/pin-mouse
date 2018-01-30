@@ -6,6 +6,8 @@
 
         var grid = $('.scheduled-pins-grid');
         var allBoardSelectors = grid.find('.board-selector');
+        var scheduleButton = $('#scheduleNow');
+        var schedule_group = $('#schedule_group');
 
         function applyBoardToAll(currentSelect) {
             var current = $(currentSelect);
@@ -16,20 +18,26 @@
             var currentSelect = $(event.target).siblings('select')[0];
             applyBoardToAll(currentSelect);
         });
-
-        var scheduleButton = $('#scheduleNow');
+        
         scheduleButton.on('click', function () {
-            var data = [];
+            var data = {
+                scheduled_pins: []
+            };
+            data.schedule_group = schedule_group.val();
+
             allBoardSelectors.each(function () {
                 _this = $(this);
 
                 if (_this.val()) {
-                    data.push({
+                    data.scheduled_pins.push({
                         scheduled_pin_id: _this.data('pin'),
                         board_uuid: _this.val()
                     });
                 }
             });
+
+            console.log(JSON.stringify(data));
+            console.log(data);
 
             $.ajax({
                 type: "POST",

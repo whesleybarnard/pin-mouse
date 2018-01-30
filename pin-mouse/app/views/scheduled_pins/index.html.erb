@@ -24,6 +24,12 @@
     <% end %>
   </div>
   <div class="col-2">
+    <label for="schedule_group">Schedule Group:</label>
+    <select class="form-control" id="schedule_group">
+      <% @schedule_groups.each do |key, val| %>
+      <option value="<%= key %>"><%= val %></option>
+      <% end %>
+    </select>
     <button id="scheduleNow" class="btn btn-block btn-primary mb-2">Schedule Now</button>
     <div class="alert alert-info">Only pins with boards selected will be scheduled</div>
   </div>
