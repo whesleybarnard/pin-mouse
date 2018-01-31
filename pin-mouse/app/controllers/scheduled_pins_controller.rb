@@ -12,6 +12,6 @@ class ScheduledPinsController < ApplicationController
     # puts data.inspect
     ScheduleService.update_board_and_time_bulk data.to_h
 
-    puts
+    render json: { saved: true }
   end
 end

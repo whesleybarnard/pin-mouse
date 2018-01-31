@@ -6,7 +6,11 @@ class ScheduleServiceTest < ActiveSupport::TestCase
         
         grouped_schedules = ScheduleService.group_and_flatten_schedules data[:scheduled_pins]
         
+        puts grouped_schedules.inspect
+        result = [{:board_uuid=>"856176647848743913", :ids=>[1, 2, 5]}, {:board_uuid=>"7777777777", :ids=>[3, 4]}]
+
         assert grouped_schedules.length == 2
+        assert grouped_schedules == result
     end
 
     

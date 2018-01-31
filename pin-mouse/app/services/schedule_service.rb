@@ -14,19 +14,14 @@ class ScheduleService
         ScheduledPin.transaction do
             grouped_data.each do |t|
                 puts t.inspect
-                ScheduledPin.where(id: t[:ids]).update_all(name: 'test')
+                ScheduledPin.where(id: t[:ids]).update_all(board_uuid: t[:board_uuid], schedule_group: bulk_data[:schedule_group])
                 # User.where(name: 'test1').update_all(name: 'test')
             end
 
-            raise RuntimeError.new("temp stuff..................")
+            # raise RuntimeError.new("temp stuff..................")
         end
 
-
-
-
-        
-
-        puts
+        true
     end
 
     private
