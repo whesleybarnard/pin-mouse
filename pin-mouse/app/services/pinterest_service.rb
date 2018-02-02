@@ -11,8 +11,8 @@ class PinterestService
     pin
   end
 
-  def self.retrieve_to_be_scheduled_pins
-    ScheduledPin.where(status: :to_be_scheduled)
+  def self.retrieve_scheduled_pins_by_status(status)
+    ScheduledPin.where(status: status)
   end
 
   def self.retrieve_boards

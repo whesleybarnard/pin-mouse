@@ -19,3 +19,10 @@
 
 # Learn more: http://github.com/javan/whenever
 
+env :PATH, ENV['PATH']
+set :environment, ENV['RAILS_ENV'] || 'development'
+set :output, {:error => 'log/whenever.error.log', :standard => 'log/whenever.cron.log'}
+
+every 1.minutes do
+    runner "ScheduleService.create_pins_for_schedule_group(:minutes_15)"
+end

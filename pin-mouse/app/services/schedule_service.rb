@@ -3,23 +3,22 @@ class ScheduleService
         Rails.logger.info "Doing bulk update for scheduled pins"
 
         bulk_data = bulk_data.deep_symbolize_keys
-        # puts
-        # puts bulk_data.inspect
 
         grouped_data = group_and_flatten_schedules bulk_data[:scheduled_pins]
         puts grouped_data.inspect
 
-        # scheduled_pins
-
         ScheduledPin.transaction do
             grouped_data.each do |t|
                 puts t.inspect
-                ScheduledPin.where(id: t[:ids]).update_all(board_uuid: t[:board_uuid], schedule_group: bulk_data[:schedule_group])
-                # User.where(name: 'test1').update_all(name: 'test')
+                ScheduledPin.where(id: t[:ids]).update_all(status: :scheduled, board_uuid: t[:board_uuid], schedule_group: bulk_data[:schedule_group])
             end
-
-            # raise RuntimeError.new("temp stuff..................")
         end
+
+        true
+    end
+
+    def self.create_pins_for_schedule_group(schedule_group)
+        Rails.logger.info "Starting the pin creation run for schedule-group: #{schedule_group}"
 
         true
     end
@@ -29,8 +28,6 @@ class ScheduleService
     def self.group_and_flatten_schedules(data)
         
         a = data.group_by { |i| i[:board_uuid] }
-        puts a.inspect
-        puts
 
         arr = []
         a.each do |key, val|

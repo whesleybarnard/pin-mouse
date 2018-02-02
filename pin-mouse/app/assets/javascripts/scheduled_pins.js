@@ -1,7 +1,9 @@
 (function () {
     $(document).ready(function () {
         $.ajaxSetup({
-            headers: {'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')}
+            headers: {
+                'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+            }
         });
 
         var grid = $('.scheduled-pins-grid');
@@ -18,8 +20,13 @@
             var currentSelect = $(event.target).siblings('select')[0];
             applyBoardToAll(currentSelect);
         });
-        
+
         scheduleButton.on('click', function () {
+            if (scheduleButton.hasClass('disabled')) {
+                return false;
+            }
+
+            scheduleButton.addClass('disabled');
             var data = {
                 scheduled_pins: []
             };
@@ -36,17 +43,25 @@
                 }
             });
 
-            console.log(JSON.stringify(data));
-            console.log(data);
-
-            $.ajax({
-                type: "POST",
-                url: '/scheduled_pins/schedule',
-                contentType: 'application/json',
-                data: JSON.stringify(data),
-                success: null,
-                dataType: 'json'
-            });
+            if (data.scheduled_pins.length) {
+                $.ajax({
+                    type: "POST",
+                    url: '/scheduled_pins/schedule',
+                    contentType: 'application/json',
+                    data: JSON.stringify(data),
+                    success: null,
+                    dataType: 'json',
+                    statusCode: {
+                        200: function () {
+                            scheduleButton.removeClass('disabled');
+                            location.reload();
+                        }
+                    }
+                });
+            }
+            else {
+                scheduleButton.removeClass('disabled');
+            }
         });
     });
 })();

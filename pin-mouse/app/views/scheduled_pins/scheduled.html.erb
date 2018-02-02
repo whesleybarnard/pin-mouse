@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col-10 scheduled-pins-grid">
+    <% @pins.each do |pin| %>
+      <div class="row mb-2">
+        <div class="col-2">
+          <div class="border border-secondary" style="max-height: 100px; overflow: hidden;">
+            <img src="<%= pin.image_url %>" alt="" style="width: 100%;">
+          </div>
+        </div>
+        <div class="col-10">
+          <div><%= pin.note %></div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
