@@ -25,10 +25,13 @@
           <a class="nav-link" href="/">Pins</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/groups">Groups</a>
+          <a class="nav-link" href="<%= url_for(action: 'index', controller: 'scheduled_pins') %>">To be Scheduled</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="<%= url_for(action: 'scheduled', controller: 'scheduled_pins') %>">Scheduled</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<%= url_for(action: 'pinned', controller: 'scheduled_pins') %>">Pinned</a>
         </li>
       </ul>
     </div>

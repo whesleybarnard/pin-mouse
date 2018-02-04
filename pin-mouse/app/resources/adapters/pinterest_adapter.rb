@@ -6,7 +6,7 @@ module Adapters
       puts encoded_pins[:data][0][:image][:original][:url]
 
       encoded_pins[:data].map do |encoded_pin|
-        Pin.new(note: encoded_pin[:note], url: encoded_pin[:url], image: encoded_pin[:image][:original][:url])
+        Pin.new(note: encoded_pin[:note], url: encoded_pin[:original_link], image: encoded_pin[:image][:original][:url])
       end
     end
 
@@ -16,7 +16,7 @@ module Adapters
       pin = PinInfo.new
       pin.pin_uuid = encoded_pin[:id]
       pin.note = encoded_pin[:note]
-      pin.link = encoded_pin[:link]
+      pin.link = encoded_pin[:original_link]
       pin.image_url = encoded_pin[:image][:original][:url]
 
       raise RuntimeError.new(pin.errors.full_messages.join(', ')) unless pin.valid?

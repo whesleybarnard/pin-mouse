@@ -9,8 +9,9 @@
         </div>
         <div class="col-10">
           <div><%= pin.note %></div>
-          <div><%= @schedule_groups[pin.schedule_group.to_sym] %></div>
           <div><%= @schedule_status[pin.status.to_sym] %></div>
+          <div><%= distance_of_time_in_words(pin.pin_date, Time.now) %> ago</div>
+          <div>Pinterest Id: <%= pin.pin_uuid %></div>
         </div>
       </div>
     <% end %>

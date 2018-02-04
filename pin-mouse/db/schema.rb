@@ -16,8 +16,8 @@ ActiveRecord::Schema.define(version: 20180127105122) do
   enable_extension "plpgsql"
 
   create_table "external_pins", force: :cascade do |t|
-    t.string "pin_uuid"
-    t.boolean "resolved"
+    t.string "pin_uuid", null: false
+    t.boolean "resolved", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -27,8 +27,9 @@ ActiveRecord::Schema.define(version: 20180127105122) do
     t.string "note", null: false
     t.string "link", null: false
     t.string "image_url", null: false
-    t.string "status", default: "to_be_scheduled", null: false
-    t.string "schedule_group", default: "to_be_scheduled", null: false
+    t.string "status", null: false
+    t.string "schedule_group"
+    t.string "pin_uuid"
     t.datetime "pin_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

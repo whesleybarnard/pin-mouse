@@ -1,9 +1,8 @@
 class PinterestResource < BaseResource
   def self.retrieve_pin(pin_uuid)
-
     response = call_api(
         :get,
-        "https://api.pinterest.com/v1/pins/#{pin_uuid}/?access_token=#{ENV['PINTEREST_ACCESS_TOKEN']}&fields=id%2Clink%2Cnote%2Curl%2Cimage%2Cmedia%2Coriginal_link%2Cattribution%2Cboard%2Ccolor%2Ccounts%2Ccreated_at%2Ccreator%2Cmetadata",
+        "https://api.pinterest.com/v1/pins/#{pin_uuid}/?access_token=#{ENV['PINTEREST_ACCESS_TOKEN']}&fields=id,link,note,url,image,media,original_link,attribution,board,color,counts,created_at,creator,metadata",
         [200]
     )
 
@@ -12,7 +11,6 @@ class PinterestResource < BaseResource
   end
 
   def self.retrieve_boards
-
     response = call_api(
         :get,
         "https://api.pinterest.com/v1/me/boards/?access_token=#{ENV['PINTEREST_ACCESS_TOKEN']}&fields=id,creator,name,url&limit=20",
@@ -34,19 +32,22 @@ class PinterestResource < BaseResource
   #   adapter.decode_pins(response.body)
   # end
 
-  # def self.create_pin(pin)
-  #   post("https://api.pinterest.com/v1/pins/?access_token=${ENV['PINTEREST_ACCESS_TOKEN']}",
-  #        body: {
-  #            board: '856176647848747140',
-  #            note: 'testing pin creation',
-  #            image_url: 'https://cdn.pixabay.com/photo/2016/11/01/23/38/beach-1790049_960_720.jpg'
-  #        })
-  #
-  #   # root:{} 3 items
-  #   # board:856176647848747140
-  #   # note:testing pin creation
-  #   # image_url:https://cdn.pixabay.com/photo/2016/11/01/23/38/beach-1790049_960_720.jpg
-  # end
+  def self.create_pin(scheduled_Pin)
+    response = call_api(
+        :post,
+        "https://api.pinterest.com/v1/pins/?access_token=#{ENV['PINTEREST_ACCESS_TOKEN']}&fields=id,link,note,url,image,media,original_link,attribution,board,color,counts,created_at,creator,metadata",
+        [201],
+        {
+            board: scheduled_Pin.board_uuid,
+            note: scheduled_Pin.note,
+            link: scheduled_Pin.link,
+            image_url: scheduled_Pin.image_url
+        }
+    )
+
+    File.write("pinterestResource_create_pin.json", response)
+    adapter.decode_pin(response.body)
+  end
 
   private
 
