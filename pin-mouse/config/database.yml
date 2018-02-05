@@ -6,21 +6,21 @@ development:
   username: pin-mouse
   password: pin-mouse-password
   encoding: utf8
-test:
-  adapter: postgresql
-  database: pin-mouse-test
-  host: localhost
-  port: 5433
-  pool: 5
-  username: pin-mouse-test
-  password: pin-mouse-password-test
-  encoding: utf8
-production:
-  adapter: postgresql
-  database: <%= ENV["PIN_MOUSE_DATABASE_NAME"] %>
-  host: <%= ENV["PIN_MOUSE_DATABASE_HOST"] %>
-  port: <%= ENV["PIN_MOUSE_DATABASE_PORT"] %>
-  pool: <%= ENV["PIN_MOUSE_DATABASE_POOL"] %>
-  username: <%= ENV["PIN_MOUSE_DATABASE_USERNAME"] %>
-  password: <%= ENV["PIN_MOUSE_DATABASE_PASSWORD"] %>
-  encoding: utf8
+# test:
+#   adapter: postgresql
+#   database: pin-mouse-test
+#   host: localhost
+#   port: 5433
+#   pool: 5
+#   username: pin-mouse-test
+#   password: pin-mouse-password-test
+#   encoding: utf8
+# production:
+#   adapter: postgresql
+#   database: <%= ENV["PIN_MOUSE_DATABASE_NAME"] %>
+#   host: <%= ENV["PIN_MOUSE_DATABASE_HOST"] %>
+#   port: <%= ENV["PIN_MOUSE_DATABASE_PORT"] %>
+#   pool: <%= ENV["PIN_MOUSE_DATABASE_POOL"] %>
+#   username: <%= ENV["PIN_MOUSE_DATABASE_USERNAME"] %>
+#   password: <%= ENV["PIN_MOUSE_DATABASE_PASSWORD"] %>
+#   encoding: utf8
