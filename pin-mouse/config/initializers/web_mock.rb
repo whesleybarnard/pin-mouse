@@ -1,5 +1,4 @@
-# puts 'setting up the mocking'
-Rails.logger.info "setting up the mocking"
+Rails.logger.warn "setting up mocking for external api calls"
 
 require 'webmock'
 include WebMock::API
@@ -7,19 +6,17 @@ include WebMock::API
 WebMock.enable!
 
 WebMock.after_request do |req, response|
-    request = {
-        uri: req.uri.to_s,
-        method: req.method.to_s.upcase,
-        headers: req.headers,
-        body: req.body
-    }
-    puts request.inspect
+    Rails.logger.warn "WebMock is in place. Currently mocking response for uri: #{req.uri.to_s}"
 end
 
 stub_request(:any, /api.pinterest.com/).
-    to_return(:body => {data: 'some data...'}.to_json, :status => 200)
+    to_return(:body => {data: 'mocked data...'}.to_json, :status => 404)
 
-# stub_request(:get, 'http://host/api').to_return(:body => 'fake body')
-stub_request(:any, /api.pinterest.com\/v1\/pins\//).
-    # to_return(status: [500, "Internal Server Error"])
+stub_request(:get, /api.pinterest.com\/v1\/pins\//).
     to_return(:body => File.read('test/mock/pinterestResource_retrieve_pin_info.json'), :status => 200)
+
+stub_request(:post, /api.pinterest.com\/v1\/pins\//).
+    to_return(:body => File.read('test/mock/pinterestResource_retrieve_pin_info.json'), :status => 201)
+
+stub_request(:get, /api.pinterest.com\/v1\/me\/boards\//).
+    to_return(:body => File.read('test/mock/pinterestResource_retrieve_boards.json'), :status => 200)
