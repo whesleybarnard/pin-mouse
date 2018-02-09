@@ -15,12 +15,14 @@ development:
 #   username: pin-mouse-test
 #   password: pin-mouse-password-test
 #   encoding: utf8
-# production:
-#   adapter: postgresql
-#   database: <%= ENV["PIN_MOUSE_DATABASE_NAME"] %>
-#   host: <%= ENV["PIN_MOUSE_DATABASE_HOST"] %>
-#   port: <%= ENV["PIN_MOUSE_DATABASE_PORT"] %>
-#   pool: <%= ENV["PIN_MOUSE_DATABASE_POOL"] %>
-#   username: <%= ENV["PIN_MOUSE_DATABASE_USERNAME"] %>
-#   password: <%= ENV["PIN_MOUSE_DATABASE_PASSWORD"] %>
-#   encoding: utf8
+production:
+  adapter: postgresql
+  database: pin-mouse
+  host: db
+  port: 5432
+  pool: 5
+  username: <%= ENV["PIN_MOUSE_DATABASE_USERNAME"] %>
+  password: <%= ENV["PIN_MOUSE_DATABASE_PASSWORD"] %>
+  encoding: utf8
+
+# need to make this file more generic.
