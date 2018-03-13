@@ -1,0 +1,27 @@
+.AppContainer {
+  display: grid;
+  height: 100%;
+  grid-template-columns: 1fr 1fr 1fr 400px 700px;
+  grid-template-rows: 1fr 1fr;
+  grid-column-gap: 10px;
+  grid-row-gap: 15px;
+  background-color: darkslategrey; }
+  .AppContainer > div {
+    background-color: darkgrey; }
+  .AppContainer .inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 10px;
+    counter-reset: inner-counter; }
+    .AppContainer .inner > div {
+      counter-increment: inner-counter;
+      background-color: lightgreen; }
+      .AppContainer .inner > div:before {
+        content: counter(inner-counter); }
+    .AppContainer .inner > div:nth-child(1) {
+      grid-column-start: 1;
+      grid-column-end: 5; }
+    .AppContainer .inner > div:nth-child(3) {
+      grid-column-start: 5;
+      grid-row-start: 1;
+      grid-row-end: 4; }
