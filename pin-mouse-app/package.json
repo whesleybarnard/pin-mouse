@@ -19,5 +19,10 @@
     "build": "npm-run-all build-css build-js",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "open-color": "^1.6.3",
+    "sass-mq": "^4.0.2",
+    "susy": "^3.0.3"
   }
 }

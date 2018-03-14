@@ -5,9 +5,9 @@ import './AppContainer.css';
 import Clock from './Clock';
 
 class AppContainer extends Component {
-  constructor(props) {
-    super(props)
-  }
+  // constructor(props) {
+  //   super(props)
+  // }
 
   render() {
     return (

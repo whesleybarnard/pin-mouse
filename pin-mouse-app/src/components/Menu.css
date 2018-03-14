@@ -1,0 +1,18 @@
+.menu-holder ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background-color: lightblue; }
+
+.menu-holder li {
+  display: inline-block;
+  padding: 8px;
+  cursor: pointer;
+  background-color: lightblue;
+  border-right: solid 1px lightcoral; }
+  .menu-holder li:last-child {
+    border-right: none; }
+  .menu-holder li:hover {
+    background-color: lightcoral; }
+  .menu-holder li a {
+    text-decoration: none; }

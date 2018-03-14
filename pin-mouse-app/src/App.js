@@ -1,21 +1,18 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import logo from './mouse.svg';
 import './App.css';
-import IdeasContainer from './components/IdeasContainer';
 import AppContainer from './components/AppContainer';
+import Menu from './components/Menu';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        {/* <header className="App-header"> */}
-          {/* <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1> */}
-        {/* </header> */}
-        {/* <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p> */}
-        {/* <IdeasContainer /> */}
+        <header className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+          <h1 className="App-title">Welcome to Pin-Mouse</h1>
+        </header>
+        <Menu />
         <AppContainer />
       </div>
     );
