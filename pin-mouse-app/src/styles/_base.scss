@@ -51,3 +51,22 @@ $susy: ('columns': susy-repeat(12));
   width: span(3);
   margin-right: gutter();
 }
+
+/*testing &*/
+%first-color {
+  padding-left: 20px;
+}
+
+.test {
+  color: red;
+
+  &__item {
+    background-color: green;
+
+    &--first {
+      padding-right: 30px;
+
+      @extend %first-color;
+    }
+  }
+}
