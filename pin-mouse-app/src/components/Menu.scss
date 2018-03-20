@@ -1,28 +1,21 @@
-.menu-holder {
-  ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    background-color: lightblue;
-  }
-  
-  li {
+@import '../styles/base';
+
+.c-menu {
+  display: block;
+
+  &__item {
+    background-color: $third-color;
+    border: none;
+    padding: 5px;
+    color: $secondary-color;
     display: inline-block;
-    padding: 8px;
     cursor: pointer;
-    background-color: lightblue;
-    border-right: solid 1px lightcoral;
+    font-size: 1.2rem;
 
-    &:last-child {
-      border-right: none;
-    }
-
-    &:hover {
-      background-color: lightcoral;
-    }
-
-    a {
-      text-decoration: none;
+    &--hover {
+      &:hover {
+        background-color: lighten($third-color, 10);
+      }
     }
   }
 }
