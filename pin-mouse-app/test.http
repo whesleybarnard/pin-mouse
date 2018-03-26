@@ -1,4 +1,4 @@
-http://localhost:5001
+http://localhost:3001
 
 ###
 
@@ -11,3 +11,7 @@ Content-Type: application/json
   "time": {{$timestamp}},
   "more": {{$guid}}
 }
+
+###
+
+http://localhost:4000/posts

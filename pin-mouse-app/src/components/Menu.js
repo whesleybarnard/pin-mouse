@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import block from 'bem-cn-lite';
 import './Menu.css';
 
@@ -14,10 +15,15 @@ const bi = b('item', { hover: true });
 
 const Menu = () => (
   <nav className={b()}>
-    <button className={bi}>Menu Item 1</button>
-    <button className={bi}>Menu Item 2</button>
-    <button className={bi}>Menu Item 3</button>
-    <button className={bi}>Menu Item 4</button>
+    <Link className={bi} to="/">
+      Home
+    </Link>
+    <Link className={bi} to="/pins">
+      Pins
+    </Link>
+    <Link className={bi} to="/logout">
+      Logout
+    </Link>
   </nav>
 );
 
