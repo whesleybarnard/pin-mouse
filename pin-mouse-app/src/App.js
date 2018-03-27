@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import './App.css';
 import AppContainer from './components/AppContainer';
 import Menu from './components/Menu';
-import AppCon2 from './components/AppCon2';
+// import AppCon2 from './components/AppCon2';
 
 const App = ({ store }) => (
   <Provider store={store}>
@@ -21,7 +21,7 @@ const App = ({ store }) => (
           <Switch>
             <Route exact path="/" component={AppContainer} />
           </Switch>
-          <AppCon2 />
+          {/* <AppCon2 /> */}
         </main>
       </div>
     </BrowserRouter>
