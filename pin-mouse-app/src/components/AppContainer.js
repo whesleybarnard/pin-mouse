@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 // import PropTypes from 'prop-types';
-import { addTodo } from '../actions/actionCreators';
+import { fetchItems } from '../actions/actionCreators';
 import './AppContainer.css';
 import Clock from './Clock';
 
@@ -17,16 +17,17 @@ class AppContainer extends Component {
   }
 
   componentWillMount() {
-    console.log('componentWillMount');
-    console.log(this);
+    // console.log('componentWillMount');
+    // console.log(this);
   }
 
   componentDidMount() {
     // this.timerID = setInterval(() => this.tick(), 1000);
-    console.log(this);
+    // console.log(this);
     console.log(this.props);
     // this.props.dispatch(tmpAction);
     // console.log(this);
+    this.props.fetchData('http://localhost:4000/posts');
   }
 
   doSomeClick() {
@@ -58,7 +59,7 @@ class AppContainer extends Component {
           <div />
         </div>
         <div>
-          {this.props.todos.map(item => <div key={item._id}>{item.value}</div>)}
+          {/* {this.props.todos.map(item => <div key={item._id}>{item.value}</div>)} */}
         </div>
       </div>
     );
@@ -81,8 +82,10 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps = dispatch => ({
   doSomeClick2: () => {
-    dispatch(addTodo('testing action'));
+    // dispatch(addTodo('testing action'));
+    console.log('just some action...');
   },
+  fetchData: url => dispatch(fetchItems(url)),
 });
 
 // const mapDispatchToProps2 = dispatch => {
