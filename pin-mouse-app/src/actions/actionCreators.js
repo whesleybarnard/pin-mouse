@@ -31,10 +31,9 @@ export const fetchItems = url => {
     dispatch(fetchItemsIsLoading(true));
 
     // TODO: move to service
-    axios
+    return axios
       .get(url)
       .then(response => {
-        // console.log(response);
         if (response.status !== 200) {
           throw Error(response.statusText);
         }
