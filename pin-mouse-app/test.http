@@ -14,4 +14,17 @@ Content-Type: application/json
 
 ###
 
-http://localhost:4000/posts
+# http://localhost:4000/posts
+http://localhost:4000/repos
+# http://localhost:4000/repos/14747598
+
+###
+
+# https://api.github.com/users/whesleybarnard
+# https://api.github.com/users/8578443
+# https://api.github.com/users/whesleybarnard/following
+# https://api.github.com/users/whesleybarnard/starred
+# https://api.github.com/events
+# https://api.github.com/issues
+# https://api.github.com/repos/typicode/json-server/issues
+https://api.github.com/repos/typicode/json-server/issues/comments

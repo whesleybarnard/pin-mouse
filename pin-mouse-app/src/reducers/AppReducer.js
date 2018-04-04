@@ -1,5 +1,10 @@
 import shortid from 'shortid';
-import { ADD_TODO, FETCH_ITEMS_IS_LOADING, FETCH_ITEMS_SUCCESS } from '../actions/actionConstants';
+import {
+  ADD_TODO,
+  FETCH_ITEMS_IS_LOADING,
+  FETCH_ITEMS_SUCCESS,
+  FETCH_REPOS_SUCCESS,
+} from '../actions/actionConstants';
 
 // const defState = {
 //   todoList: ['todo 1', 'todo 2', 'todo 3'].map(obj => ({
@@ -42,3 +47,12 @@ export function itemsAreLoaded(state = [], action) {
       return state;
   }
 }
+
+export const repoReducer = (state = [], action) => {
+  switch (action.type) {
+    case FETCH_REPOS_SUCCESS:
+      return action.repos;
+    default:
+      return state;
+  }
+};
