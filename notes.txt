@@ -1,0 +1,14 @@
+=== rails app jwt | Knock ===
+https://medium.com/@nick.hartunian/knock-jwt-auth-for-rails-api-create-react-app-6765192e295a
+https://engineering.musefind.com/building-a-simple-token-based-authorization-api-with-rails-a5c181b83e02
+http://pacuna.io/2016/06/03/rails-and-jwt/
+http://codycallahan.com/blog/authenticate-rails-api-with-knock-jwt
+
+=== raw jwt stuff ===
+http://www.thegreatcodeadventure.com/jwt-auth-in-rails-from-scratch/
+
+=== react redux and jwt idea ===
+https://auth0.com/blog/secure-your-react-and-redux-app-with-jwt-authentication/
+
+=== react forms for login ===
+https://reactjs.org/docs/forms.html
